@@ -1,1075 +1,504 @@
-/* 1. Pengaturan umum
-   Palet: krem #FFF7D1, krem tua #FFECC8, peach #FFD09B, pink #FFB0B0.
-   Warna coklat tua dipakai untuk teks dan tombol agar tetap terbaca. */
-:root {
-  --krem: #fff7d1;
-  --krem-tua: #ffecc8;
-  --peach: #ffd09b;
-  --pink: #ffb0b0;
-  --tinta: #3d2616;
-  --tinta-lembut: #7a5640;
-  --redup: #b39a7e;
-  --putih: #fffdf4;
-  --garis: rgba(61, 38, 22, 0.14);
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 76px;
-}
-
-body {
-  margin: 0;
-  font-family: "Poppins", Arial, sans-serif;
-  color: var(--tinta);
-  line-height: 1.6;
-  background-color: var(--krem);
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-a {
-  color: var(--tinta);
-}
-
-h1,
-h2,
-h3 {
-  line-height: 1.2;
-  margin: 0;
-}
-
-.tengah {
-  text-align: center;
-  margin: 40px 0 0;
-}
-
-/* 2. Bilah info dan header */
-.info-bar {
-  background-color: var(--peach);
-  color: var(--tinta);
-  text-align: center;
-  font-size: 13px;
-  padding: 8px 16px;
-}
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 60;
-  height: 68px;
-  margin-bottom: -68px;
-  color: var(--krem);
-  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-}
-
-.site-header.menempel {
-  background-color: var(--krem);
-  color: var(--tinta);
-  box-shadow: 0 1px 0 var(--garis);
-}
-
-.header-inner {
-  max-width: 1200px;
-  height: 100%;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-}
-
-.nav-grup {
-  display: flex;
-  gap: 4px;
-}
-
-.nav-kanan {
-  justify-content: flex-end;
-}
-
-.nav-link,
-.logo {
-  color: inherit;
-  text-decoration: none;
-}
-
-.nav-link {
-  font-size: 14px;
-  padding: 6px 12px;
-  border-radius: 999px;
-}
-
-.nav-link:hover {
-  background-color: rgba(255, 247, 209, 0.22);
-}
-
-.menempel .nav-link:hover {
-  background-color: var(--krem-tua);
-}
-
-.nav-link.aktif {
-  background-color: var(--krem);
-  color: var(--tinta);
-}
-
-.menempel .nav-link.aktif {
-  background-color: var(--peach);
-}
-
-.logo {
-  font-weight: 700;
-  letter-spacing: 2px;
-  font-size: 18px;
-}
-
-.menu-toggle {
-  display: none;
-  justify-self: end;
-  background: none;
-  border: 1px solid currentColor;
-  color: inherit;
-  border-radius: 999px;
-  padding: 6px 16px;
-  font-family: inherit;
-  cursor: pointer;
-}
-
-/* 3. Hero (carousel) */
-.hero {
-  position: relative;
-  height: 680px;
-  overflow: hidden;
-  background-color: var(--tinta);
-  color: var(--krem);
-}
-
-.hero-slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.7s, visibility 0s 0.7s;
-}
-
-.hero-slide.aktif {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.7s;
-}
-
-.bg-foto {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-slide::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(40, 24, 14, 0.62) 0%,
-    rgba(40, 24, 14, 0.28) 38%,
-    rgba(40, 24, 14, 0.5) 100%
-  );
-}
-
-.hero-slide.gelap::after {
-  background: linear-gradient(
-    180deg,
-    rgba(40, 24, 14, 0.7) 0%,
-    rgba(40, 24, 14, 0.55) 50%,
-    rgba(40, 24, 14, 0.65) 100%
-  );
-}
-
-.hero-isi {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  height: 100%;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.hero-teks {
-  position: absolute;
-  left: 24px;
-  top: 200px;
-  max-width: 400px;
-}
-
-.hero-teks h1,
-.hero-teks h2 {
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.hero-teks p {
-  margin: 0 0 20px;
-  font-size: 14px;
-  color: #f6e8c6;
-}
-
-.hero-kartu {
-  position: absolute;
-  right: 24px;
-  top: 150px;
-  width: 230px;
-  padding: 8px;
-  border-radius: 18px;
-  background-color: rgba(255, 247, 209, 0.28);
-  backdrop-filter: blur(8px);
-  text-decoration: none;
-  color: var(--tinta);
-}
-
-.hero-kartu img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.hero-kartu-label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-  padding: 8px 10px;
-  border-radius: 10px;
-  background-color: var(--krem);
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.hero-kartu-label b {
-  background-color: var(--peach);
-  border-radius: 999px;
-  padding: 2px 10px;
-  font-size: 12px;
-}
-
-/* Kata raksasa di bawah hero, terpotong di tepi bawah seperti referensi */
-.kata {
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  bottom: -0.13em;
-  margin: 0;
-  padding: 0 24px;
-  max-width: 1248px;
-  margin-inline: auto;
-  font-size: clamp(110px, 22vw, 320px);
-  font-weight: 700;
-  line-height: 0.82;
-  letter-spacing: -0.05em;
-  color: var(--krem);
-  pointer-events: none;
-}
-
-.hero-kontrol {
-  position: absolute;
-  z-index: 5;
-  right: 24px;
-  bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 10px;
-  border-radius: 999px;
-  background-color: var(--krem);
-}
-
-.hero-kontrol button {
-  padding: 5px 14px;
-  border: 0;
-  border-radius: 999px;
-  background-color: var(--krem-tua);
-  color: var(--tinta);
-  font-family: inherit;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-.hero-kontrol button:hover {
-  background-color: var(--peach);
-}
-
-.hero-titik {
-  display: flex;
-  gap: 6px;
-}
-
-.hero-titik button {
-  width: 22px;
-  height: 6px;
-  padding: 0;
-  border-radius: 3px;
-  background-color: var(--peach);
-}
-
-.hero-titik button.aktif {
-  background-color: var(--tinta);
-}
-
-/* 4. Tombol */
-.tombol {
-  display: inline-block;
-  padding: 11px 24px;
-  border: 1.5px solid transparent;
-  border-radius: 999px;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.2s, color 0.2s, transform 0.1s;
-}
-
-.tombol:active {
-  transform: translateY(1px);
-}
-
-.tombol-krem {
-  background-color: var(--krem);
-  color: var(--tinta);
-}
-
-.tombol-krem:hover {
-  background-color: var(--peach);
-}
-
-.tombol-gelap {
-  background-color: var(--tinta);
-  color: var(--krem);
-}
-
-.tombol-gelap:hover {
-  background-color: #5a3a24;
-}
-
-.tombol-garis-gelap {
-  border-color: var(--tinta);
-  color: var(--tinta);
-}
-
-.tombol-garis-gelap:hover {
-  background-color: var(--tinta);
-  color: var(--krem);
-}
-
-.tombol-garis-krem {
-  border-color: var(--krem);
-  color: var(--krem);
-}
-
-.tombol-garis-krem:hover {
-  background-color: var(--krem);
-  color: var(--tinta);
-}
-
-.tombol:disabled {
-  background-color: var(--krem-tua);
-  color: var(--redup);
-  cursor: not-allowed;
-}
-
-.tombol-teks {
-  background: none;
-  border: 0;
-  padding: 0;
-  margin-top: 12px;
-  font-family: inherit;
-  font-size: 14px;
-  color: var(--tinta-lembut);
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-/* 5. Struktur bagian */
-.blok {
-  padding: 72px 24px;
-}
-
-.blok-krem {
-  background-color: var(--krem-tua);
-}
-
-.kolom {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.sub {
-  display: inline-block;
-  margin-bottom: 12px;
-  padding: 3px 14px;
-  border-radius: 999px;
-  background-color: var(--pink);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-h2 {
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
-.subjudul {
-  font-size: 18px;
-  margin: 32px 0 8px;
-}
-
-.pengantar {
-  max-width: 620px;
-  margin: 0 0 32px;
-  color: var(--tinta-lembut);
-}
-
-.dua-kolom {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: start;
-}
-
-/* 6. Filter dan menu */
-.filter {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 32px;
-  margin-bottom: 8px;
-}
-
-.filter-btn {
-  padding: 0;
-  border: 0;
-  background: none;
-  font-family: inherit;
-  font-size: clamp(26px, 3.4vw, 40px);
-  font-weight: 600;
-  color: var(--redup);
-  cursor: pointer;
-  transition: color 0.2s;
-}
-
-.filter-btn:hover {
-  color: var(--tinta-lembut);
-}
-
-.filter-btn.aktif {
-  color: var(--tinta);
-}
-
-.filter-btn sup {
-  margin-left: 2px;
-  font-size: 0.4em;
-  font-weight: 600;
-  vertical-align: super;
-}
-
-.menu-grid {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.menu-baris {
-  position: relative;
-  padding: 20px 16px 16px;
-  border: 2px solid transparent;
-  border-radius: 20px;
-  background-color: var(--krem-tua);
-  transition: border-color 0.2s, transform 0.2s;
-}
-
-.menu-baris:hover {
-  transform: translateY(-3px);
-}
-
-.menu-baris[hidden] {
-  display: none;
-}
-
-.menu-baris.dipilih {
-  border-color: var(--pink);
-}
-
-.lencana {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  padding: 2px 12px;
-  border-radius: 999px;
-  background-color: var(--krem);
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.lencana-manis {
-  background-color: var(--pink);
-}
-
-.menu-foto {
-  display: block;
-  width: 70%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  margin: 24px auto 16px;
-  border-radius: 50%;
-  border: 4px solid var(--krem);
-}
-
-.menu-nama {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  min-height: 2.4em;
-}
-
-.menu-bawah {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 6px 6px 6px 14px;
-  border-radius: 12px;
-  background-color: var(--putih);
-}
-
-.menu-harga {
-  font-weight: 600;
-}
-
-.qty {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-}
-
-.qty button {
-  width: 30px;
-  height: 30px;
-  border: 0;
-  border-radius: 8px;
-  background-color: var(--tinta);
-  color: var(--krem);
-  font-size: 17px;
-  font-family: inherit;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.qty button:hover {
-  background-color: #5a3a24;
-}
-
-.qty-nilai {
-  min-width: 26px;
-  text-align: center;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-/* 7. Tentang */
-.alasan,
-.langkah {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.alasan li {
-  display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 8px;
-  padding: 14px 0;
-  border-top: 1px solid var(--garis);
-}
-
-.alasan p {
-  margin: 0;
-}
-
-.no {
-  color: var(--tinta-lembut);
-  font-weight: 600;
-}
-
-.kolase {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 14px;
-  height: 560px;
-}
-
-.kolase-item {
-  padding: 0;
-  border: 0;
-  overflow: hidden;
-  border-radius: 20px;
-  background: none;
-  cursor: zoom-in;
-}
-
-.kolase-tinggi {
-  grid-row: 1 / 3;
-}
-
-.kolase-item img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s;
-}
-
-.kolase-item:hover img,
-.kolase-item:focus-visible img {
-  transform: scale(1.05);
-}
-
-/* 8. Cara pemesanan */
-.langkah li {
-  display: flex;
-  align-items: baseline;
-  gap: 24px;
-  padding: 18px 0;
-  border-top: 1px solid var(--garis);
-  font-size: clamp(22px, 3.2vw, 36px);
-  font-weight: 600;
-}
-
-.langkah li:last-child {
-  border-bottom: 1px solid var(--garis);
-}
-
-.langkah .no {
-  font-size: 0.5em;
-  color: var(--redup);
-  min-width: 2em;
-}
-
-/* 9. Pesanan, form, FAQ */
-.kartu-putih {
-  padding: 24px;
-  border-radius: 20px;
-  background-color: var(--putih);
-}
-
-.kosong {
-  margin: 0;
-  color: var(--tinta-lembut);
-}
-
-.keranjang-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.keranjang-list li {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--garis);
-}
-
-.keranjang-list .rincian {
-  color: var(--tinta-lembut);
-  font-size: 14px;
-}
-
-.total {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 14px;
-  font-size: 18px;
-}
-
-label {
-  display: block;
-  margin: 0 0 4px;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-input,
-textarea {
-  display: block;
-  width: 100%;
-  padding: 11px 14px;
-  margin-bottom: 16px;
-  border: 1.5px solid var(--garis);
-  border-radius: 12px;
-  background-color: var(--krem);
-  color: var(--tinta);
-  font-family: inherit;
-  font-size: 15px;
-}
-
-input:focus,
-textarea:focus {
-  outline: 2px solid var(--pink);
-  border-color: var(--pink);
-}
-
-.faq details {
-  border-top: 1px solid var(--garis);
-  padding: 12px 0;
-}
-
-.faq details:last-child {
-  border-bottom: 1px solid var(--garis);
-}
-
-.faq summary {
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.faq p {
-  margin: 8px 0 0;
-  color: var(--tinta-lembut);
-}
-
-/* 10. Video dan peta */
-.video-yt {
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 880px;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  border: 0;
-  border-radius: 20px;
-}
-
-.peta {
-  display: block;
-  width: 100%;
-  height: 380px;
-  border: 0;
-  border-radius: 20px;
-}
-
-/* 11. Ajakan akhir, pita, footer */
-.ajakan {
-  position: relative;
-  padding: 96px 24px;
-  text-align: center;
-  color: var(--krem);
-  background-color: var(--tinta);
-  overflow: hidden;
-}
-
-.ajakan::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: rgba(40, 24, 14, 0.6);
-}
-
-.ajakan > *:not(.bg-foto) {
-  position: relative;
-  z-index: 2;
-}
-
-.ajakan h2 {
-  margin-bottom: 8px;
-}
-
-.ajakan p {
-  margin: 0 0 24px;
-}
-
-.ajakan-aksi {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.pita {
-  overflow: hidden;
-  background-color: var(--peach);
-  border-top: 1px solid var(--garis);
-  padding: 10px 0;
-  font-size: 13px;
-  white-space: nowrap;
-}
-
-.pita-isi {
-  display: inline-flex;
-  animation: jalan 40s linear infinite;
-}
-
-.pita-isi span {
-  padding: 0 28px;
-}
-
-.pita-isi span::after {
-  content: "/";
-  margin-left: 56px;
-  color: var(--tinta-lembut);
-}
-
-@keyframes jalan {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.site-footer {
-  background-color: var(--tinta);
-  color: var(--krem-tua);
-  text-align: center;
-  padding: 32px 24px;
-}
-
-.site-footer p {
-  margin: 0 0 6px;
-}
-
-.footer-nama {
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--krem);
-}
-
-.site-footer .kredit {
-  max-width: 760px;
-  margin: 12px auto 0;
-  font-size: 12px;
-  color: var(--redup);
-}
-
-.site-footer .kredit a {
-  color: var(--peach);
-}
-
-/* 12. Bilah pesanan dan lightbox */
-.bar-pesanan {
-  position: fixed;
-  left: 16px;
-  right: 16px;
-  bottom: 16px;
-  z-index: 40;
-  max-width: 480px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 12px 20px;
-  background-color: var(--tinta);
-  color: var(--krem);
-  text-decoration: none;
-  border-radius: 999px;
-  box-shadow: 0 6px 20px rgba(40, 24, 14, 0.3);
-}
-
-.bar-pesanan[hidden],
-.lightbox[hidden] {
-  display: none;
-}
-
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  background-color: rgba(40, 24, 14, 0.88);
-}
-
-.lightbox img {
-  max-height: 100%;
-  border-radius: 16px;
-}
-
-.lightbox-tutup {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  padding: 8px 18px;
-  border: 0;
-  border-radius: 999px;
-  background: var(--krem);
-  font-family: inherit;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* 13. Gerakan dikurangi */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .pita-isi {
-    animation: none;
-  }
-}
-
-/* 14. Tablet */
-@media (max-width: 1000px) {
-  .menu-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .dua-kolom {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .kolase {
-    height: 440px;
-  }
-}
-
-/* 15. Layar kecil */
-@media (max-width: 760px) {
-  .blok {
-    padding: 48px 16px;
-  }
-
-  .header-inner {
-    grid-template-columns: 1fr auto;
-    padding: 0 16px;
-  }
-
-  .logo {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .menu-toggle {
-    display: block;
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .nav-grup {
-    display: none;
-    grid-column: 1 / 3;
-    flex-direction: column;
-    background-color: var(--krem);
-    color: var(--tinta);
-    border-radius: 16px;
-    padding: 8px;
-    box-shadow: 0 8px 24px rgba(40, 24, 14, 0.2);
-  }
-
-  .site-header.buka .nav-grup {
-    display: flex;
-  }
-
-  .nav-kanan {
-    grid-row: 3;
-    border-radius: 0 0 16px 16px;
-    margin-top: -16px;
-    padding-top: 0;
-  }
-
-  .nav-kiri {
-    grid-row: 2;
-    margin-top: 8px;
-  }
-
-  .site-header.buka .nav-kiri {
-    border-radius: 16px 16px 0 0;
-  }
-
-  .nav-kiri,
-  .nav-kanan {
-    justify-content: flex-start;
-  }
-
-  .hero {
-    height: 600px;
-  }
-
-  .hero-teks {
-    left: 16px;
-    right: 16px;
-    top: 120px;
-    max-width: none;
-  }
-
-  .hero-kartu {
-    display: none;
-  }
-
-  .hero-isi {
-    padding: 0 16px;
-  }
-
-  .kata {
-    padding: 0 16px;
-  }
-
-  .hero-kontrol {
-    right: 16px;
-    bottom: 16px;
-  }
-
-  .hero-kontrol button:not(.hero-titik button) {
-    display: none;
-  }
-
-  .menu-grid {
-    gap: 12px;
-  }
-
-  .menu-baris {
-    padding: 16px 10px 12px;
-  }
-
-  .menu-nama {
-    font-size: 14px;
-  }
-
-  .menu-bawah {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 8px;
-  }
-
-  .qty {
-    justify-content: space-between;
-  }
-
-  .kolase {
-    height: 360px;
-  }
-
-  .langkah li {
-    gap: 12px;
-  }
-}
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Risol Lagi - Risol Homemade Banyumas</title>
+    <meta
+      name="description"
+      content="Risol homemade dengan banyak pilihan rasa. Pesan lewat WhatsApp."
+    />
+    <!-- Menghubungkan huruf Poppins dan file CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <!-- Bilah info paling atas -->
+    <div class="info-bar">
+      Risol homemade &middot; Pesan lewat WhatsApp &middot; Banyumas, Jawa Tengah
+    </div>
+
+    <!-- HEADER: nama usaha dan menu (menumpuk di atas hero) -->
+    <header class="site-header" id="atas">
+      <div class="header-inner">
+        <nav class="nav-grup nav-kiri" aria-label="Menu utama">
+          <a class="nav-link" href="#produk">Produk</a>
+          <a class="nav-link" href="#tentang">Tentang</a>
+          <a class="nav-link" href="#pesan">Pesan</a>
+        </nav>
+        <a href="#atas" class="logo">RISOL LAGI</a>
+        <nav class="nav-grup nav-kanan" aria-label="Menu lainnya">
+          <a class="nav-link" href="#kontak">Kontak</a>
+          <a class="nav-link" href="#google-maps">Google Maps</a>
+        </nav>
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-expanded="false"
+          aria-controls="atas"
+        >
+          Menu
+        </button>
+      </div>
+    </header>
+
+    <!-- HERO (carousel) -->
+    <section class="hero" id="hero" aria-roledescription="carousel" aria-label="Sorotan">
+      <article class="hero-slide aktif">
+        <img class="bg-foto" src="image/hero-renyah.jpg" alt="" />
+        <div class="hero-isi">
+          <div class="hero-teks">
+            <h1>Kenikmatan segala rasa di setiap gigitan</h1>
+            <p>
+              Risol homemade dari bahan pilihan, mulai Rp3.500 per buah. Pilih
+              rasa, atur jumlah, lalu kirim pesanan lewat WhatsApp.
+            </p>
+            <a href="#pesan" class="tombol tombol-krem">Pesan sekarang</a>
+          </div>
+          <a href="#produk" class="hero-kartu">
+            <img src="image/menu/ayam-mayo.jpg" alt="" />
+            <span class="hero-kartu-label"><span>Risol Ayam Mayo</span><b>Lihat</b></span>
+          </a>
+        </div>
+        <p class="kata" aria-hidden="true">Renyah</p>
+      </article>
+
+      <article class="hero-slide">
+        <img class="bg-foto" src="image/hero-gurih.jpg" alt="" />
+        <div class="hero-isi">
+          <div class="hero-teks">
+            <h2>Isian melimpah</h2>
+            <p>
+              Mulai dari Risol Sayur Original sampai Ayam Mayo dan Beef Slice,
+              gurih dan mengenyangkan, Rp3.500 per buah.
+            </p>
+            <a href="#produk" class="tombol tombol-krem">Lihat menu</a>
+          </div>
+          <a href="#produk" class="hero-kartu">
+            <img src="image/menu/beef.jpg" alt="" />
+            <span class="hero-kartu-label"><span>Risol Beef Slice</span><b>Lihat</b></span>
+          </a>
+        </div>
+        <p class="kata" aria-hidden="true">Gurih</p>
+      </article>
+
+      <article class="hero-slide gelap">
+        <img class="bg-foto" src="image/hero-lumer.jpg" alt="" />
+        <div class="hero-isi">
+          <div class="hero-teks">
+            <h2>Risol Coklat Lumer</h2>
+            <p>
+              Kulit renyah dengan isian coklat yang lumer saat digigit.
+              Tersedia juga rasa Keju dan Matcha, masing-masing Rp4.000.
+            </p>
+            <a href="#produk" class="tombol tombol-krem">Pilih rasa manis</a>
+          </div>
+          <a href="#produk" class="hero-kartu">
+            <img src="image/menu/coklat.jpg" alt="" />
+            <span class="hero-kartu-label"><span>Risol Coklat Lumer</span><b>Lihat</b></span>
+          </a>
+        </div>
+        <p class="kata" aria-hidden="true">Lumer</p>
+      </article>
+
+      <div class="hero-kontrol">
+        <button type="button" id="heroPrev" aria-label="Slide sebelumnya">Sebelumnya</button>
+        <div class="hero-titik" id="heroTitik"></div>
+        <button type="button" id="heroNext" aria-label="Slide berikutnya">Berikutnya</button>
+      </div>
+    </section>
+
+    <main>
+      <!-- BAGIAN PRODUK -->
+      <section id="produk" class="blok">
+        <div class="kolom">
+          <div class="filter" role="group" aria-label="Filter menu">
+            <button class="filter-btn aktif" data-filter="semua">Semua<sup>8</sup></button>
+            <button class="filter-btn" data-filter="gurih">Gurih<sup>5</sup></button>
+            <button class="filter-btn" data-filter="manis">Manis<sup>3</sup></button>
+          </div>
+          <p class="pengantar">
+            Produk dan harga. Atur jumlah langsung di kartu, pesananmu akan
+            muncul di bagian Pesan di bawah.
+          </p>
+
+          <ul class="menu-grid" id="menuDaftar">
+            <li class="menu-baris" data-cat="gurih" data-name="Risol Sayur Original" data-price="3500">
+              <span class="lencana">Gurih</span>
+              <img class="menu-foto" src="image/menu/sayur.jpg" alt="" loading="lazy" />
+              <h3 class="menu-nama">Risol Sayur Original</h3>
+              <div class="menu-bawah">
+                <span class="menu-harga">Rp3.500</span>
+                <span class="qty">
+                  <button class="qty-min" aria-label="Kurangi Risol Sayur Original">−</button>
+                  <output class="qty-nilai">0</output>
+                  <button class="qty-plus" aria-label="Tambah Risol Sayur Original">+</button>
+                </span>
+              </div>
+            </li>
+            <li class="menu-baris" data-cat="gurih" data-name="Risol Ayam Pedas" data-price="3500">
+              <span class="lencana">Gurih</span>
+              <img class="menu-foto" src="image/menu/ayam-pedas.jpg" alt="" loading="lazy" />
+              <h3 class="menu-nama">Risol Ayam Pedas</h3>
+              <div class="menu-bawah">
+                <span class="menu-harga">Rp3.500</span>
+                <span class="qty">
+                  <button class="qty-min" aria-label="Kurangi Risol Ayam Pedas">−</button>
+                  <output class="qty-nilai">0</output>
+                  <button class="qty-plus" aria-label="Tambah Risol Ayam Pedas">+</button>
+                </span>
+              </div>
+            </li>
+            <li class="menu-baris" data-cat="gurih" data-name="Risol Ayam Mayo" data-price="3500">
+              <span class="lencana">Gurih</span>
+              <img class="menu-foto" src="image/menu/ayam-mayo.jpg" alt="" loading="lazy" />
+              <h3 class="menu-nama">Risol Ayam Mayo</h3>
+              <div class="menu-bawah">
+                <span class="menu-harga">Rp3.500</span>
+                <span class="qty">
+                  <button class="qty-min" aria-label="Kurangi Risol Ayam Mayo">−</button>
+                  <output class="qty-nilai">0</output>
+                  <button class="qty-plus" aria-label="Tambah Risol Ayam Mayo">+</button>
+                </span>
+              </div>
+            </li>
+            <li class="menu-baris" data-cat="gurih" data-name="Risol Sosis Telor Mayo" data-price="3500">
+              <span class="lencana">Gurih</span>
+              <img class="menu-foto" src="image/menu/sosis.jpg" alt="" loading="lazy" />
+              <h3 class="menu-nama">Risol Sosis Telor Mayo</h3>
+              <div class="menu-bawah">
+                <span class="menu-harga">Rp3.500</span>
+                <span class="qty">
+                  <button class="qty-min" aria-label="Kurangi Risol Sosis Telor Mayo">−</button>
+                  <output class="qty-nilai">0</output>
+                  <button class="qty-plus" aria-label="Tambah Risol Sosis Telor Mayo">+</button>
+                </span>
+              </div>
+            </li>
+            <li class="menu-baris" data-cat="gurih" data-name="Risol Beef Slice" data-price="3500">
+              <span class="lencana">Gurih</span>
+              <img class="menu-foto" src="image/menu/beef.jpg" alt="" loading="lazy" />
+              <h3 class="menu-nama">Risol Beef Slice</h3>
+              <div class="menu-bawah">
+                <span class="menu-harga">Rp3.500</span>
+                <span class="qty">
+                  <button class="qty-min" aria-label="Kurangi Risol Beef Slice">−</button>
+                  <output class="qty-nilai">0</output>
+                  <button class="qty-plus" aria-label="Tambah Risol Beef Slice">+</button>
+                </span>
+              </div>
+            </li>
+            <li class="menu-baris" data-cat="manis" data-name="Risol Coklat Lumer" data-price="4000">
+              <span class="lencana lencana-manis">Manis</span>
+              <img class="menu-foto" src="image/menu/coklat.jpg" alt="" loading="lazy" />
+              <h3 class="menu-nama">Risol Coklat Lumer</h3>
+              <div class="menu-bawah">
+                <span class="menu-harga">Rp4.000</span>
+                <span class="qty">
+                  <button class="qty-min" aria-label="Kurangi Risol Coklat Lumer">−</button>
+                  <output class="qty-nilai">0</output>
+                  <button class="qty-plus" aria-label="Tambah Risol Coklat Lumer">+</button>
+                </span>
+              </div>
+            </li>
+            <li class="menu-baris" data-cat="manis" data-name="Risol Keju Lumer" data-price="4000">
+              <span class="lencana lencana-manis">Manis</span>
+              <img class="menu-foto" src="image/menu/keju.jpg" alt="" loading="lazy" />
+              <h3 class="menu-nama">Risol Keju Lumer</h3>
+              <div class="menu-bawah">
+                <span class="menu-harga">Rp4.000</span>
+                <span class="qty">
+                  <button class="qty-min" aria-label="Kurangi Risol Keju Lumer">−</button>
+                  <output class="qty-nilai">0</output>
+                  <button class="qty-plus" aria-label="Tambah Risol Keju Lumer">+</button>
+                </span>
+              </div>
+            </li>
+            <li class="menu-baris" data-cat="manis" data-name="Risol Matcha Lumer" data-price="4000">
+              <span class="lencana lencana-manis">Manis</span>
+              <img class="menu-foto" src="image/menu/matcha.jpg" alt="" loading="lazy" />
+              <h3 class="menu-nama">Risol Matcha Lumer</h3>
+              <div class="menu-bawah">
+                <span class="menu-harga">Rp4.000</span>
+                <span class="qty">
+                  <button class="qty-min" aria-label="Kurangi Risol Matcha Lumer">−</button>
+                  <output class="qty-nilai">0</output>
+                  <button class="qty-plus" aria-label="Tambah Risol Matcha Lumer">+</button>
+                </span>
+              </div>
+            </li>
+          </ul>
+
+          <p class="tengah">
+            <a href="#pesan" class="tombol tombol-garis-gelap">Lihat pesanan</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- BAGIAN TENTANG -->
+      <section id="tentang" class="blok blok-krem">
+        <div class="kolom dua-kolom">
+          <div>
+            <span class="sub">Tentang Kami</span>
+            <h2>Dibuat sendiri, dengan bahan pilihan</h2>
+            <p>
+              Kami adalah produsen risol yang 100% Homemade dimana kami
+              mengutamakan kualitas sehingga melahirkan citarasa yang nikmat
+              disetiap gigitan.
+            </p>
+
+            <h3 class="subjudul">Mengapa Memilih Kami?</h3>
+            <ol class="alasan">
+              <li>
+                <span class="no">01</span>
+                <p>
+                  Risol yang kami buat menggunakan bahan pilihan dan berkualitas
+                  untuk menghasilkan risol yang lezat, berkualitas, dan
+                  memuaskan.
+                </p>
+              </li>
+              <li>
+                <span class="no">02</span>
+                <p>
+                  Banyak pilihan rasa yang mampu menggugah selera dan bisa
+                  disesuaikan dengan selera mu.
+                </p>
+              </li>
+              <li>
+                <span class="no">03</span>
+                <p>
+                  Harga yang ramah di kantong sudah bisa menikmati camilan lezat
+                  tanpa harus mengeluarkan banyak uang.
+                </p>
+              </li>
+            </ol>
+          </div>
+
+          <div class="kolase">
+            <button class="kolase-item kolase-tinggi" data-lightbox>
+              <img src="image/risol-aneka.jpg" alt="Risol goreng renyah dalam kemasan" loading="lazy" />
+            </button>
+            <button class="kolase-item" data-lightbox>
+              <img src="image/risol-coklat.jpg" alt="Risol coklat lumer dan segelas teh" loading="lazy" />
+            </button>
+            <button class="kolase-item" data-lightbox>
+              <img src="image/risol-isi-sayur.jpg" alt="Risol dibelah, isi sayur terlihat" loading="lazy" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARA PEMESANAN -->
+      <section id="cara" class="blok">
+        <div class="kolom">
+          <span class="sub">Cara Pemesanan</span>
+          <ol class="langkah">
+            <li><span class="no">01</span><span class="isi">Pilih produk dan jumlah</span></li>
+            <li><span class="no">02</span><span class="isi">Hubungi kami melalui WhatsApp</span></li>
+            <li><span class="no">03</span><span class="isi">Lakukan pembayaran, pesanan dikirim</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- BAGIAN PESAN -->
+      <section id="pesan" class="blok blok-krem">
+        <div class="kolom">
+          <span class="sub">Pesan</span>
+          <h2>Pesanan Kamu</h2>
+
+          <div class="dua-kolom pesan-kotak">
+            <div class="kartu-putih">
+              <p class="kosong" id="keranjangKosong">
+                Belum ada pesanan. Pilih risol dari <a href="#produk">menu</a>.
+              </p>
+              <ul id="keranjangList" class="keranjang-list"></ul>
+              <div class="total" id="totalBaris" hidden>
+                <span>Total</span>
+                <strong id="totalHarga">Rp0</strong>
+              </div>
+              <button type="button" class="tombol-teks" id="kosongkan" hidden>
+                Kosongkan pesanan
+              </button>
+            </div>
+
+            <form id="formPesanan" class="kartu-putih">
+              <label for="namaPesan">Nama pemesan</label>
+              <input type="text" id="namaPesan" name="nama" required />
+
+              <label for="catatanPesan">Catatan (opsional)</label>
+              <textarea
+                id="catatanPesan"
+                name="catatan"
+                rows="3"
+                placeholder="Alamat antar, tanpa pedas, dll."
+              ></textarea>
+
+              <button type="submit" class="tombol tombol-gelap" id="kirimPesanan" disabled>
+                Kirim pesanan via WhatsApp
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIDEO -->
+      <section class="blok">
+        <div class="kolom">
+          <!-- Sematan Video YouTube (Ganti atribut src dengan link embed video asli) -->
+          <iframe
+            class="video-yt"
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/UHH3ucvAqGA?si=NufkQPaZXsokCr-d"
+            title="YouTube video player"
+            frameborder="0"
+            loading="lazy"
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+              web-share;
+            "
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- BAGIAN KONTAK -->
+      <section id="kontak" class="blok blok-krem">
+        <div class="kolom">
+          <span class="sub">Kontak</span>
+          <h2>Hubungi Kami</h2>
+
+          <div class="dua-kolom">
+            <div>
+              <p>Jl. Raya Baturraden No. 10<br />Banyumas, Jawa Tengah</p>
+              <p>
+                Ada pertanyaan atau mau pesan dalam jumlah banyak? Kirim pesan,
+                kami balas lewat WhatsApp.
+              </p>
+              <p>
+                <a
+                  class="tombol tombol-gelap"
+                  href="https://wa.me/6285181838164?text=Halo%20Risol%20Lagi,%20saya%20mau%20pesan"
+                  target="_blank"
+                  rel="noopener"
+                  >Pesan via WhatsApp</a
+                >
+              </p>
+
+              <h3 class="subjudul">Pertanyaan umum</h3>
+              <div class="faq">
+                <details>
+                  <summary>Apakah ada pilihan rasa manis?</summary>
+                  <p>
+                    Ada: Risol Coklat Lumer, Keju Lumer, dan Matcha Lumer,
+                    masing-masing Rp4.000.
+                  </p>
+                </details>
+                <details>
+                  <summary>Apakah risolnya homemade?</summary>
+                  <p>Ya, semua risol kami buat sendiri dengan bahan pilihan.</p>
+                </details>
+                <details>
+                  <summary>Bagaimana cara membayar?</summary>
+                  <p>
+                    Pembayaran dilakukan setelah pesananmu kami konfirmasi lewat
+                    WhatsApp, lalu pesanan dikirim.
+                  </p>
+                </details>
+              </div>
+            </div>
+
+            <form action="#" method="post" id="formKontak" class="kartu-putih">
+              <label for="nama">Nama</label>
+              <input type="text" id="nama" name="nama" required />
+
+              <label for="wa">Nomor WhatsApp</label>
+              <input type="tel" id="wa" name="wa" placeholder="0812..." required />
+
+              <label for="pesan">Pesan</label>
+              <textarea id="pesan" name="pesan" rows="4"></textarea>
+
+              <button type="submit" class="tombol tombol-gelap">Kirim</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- BAGIAN GOOGLE MAPS -->
+      <section id="google-maps" class="blok">
+        <div class="kolom">
+          <span class="sub">Peta</span>
+          <h2>Lokasi Kami</h2>
+          <!-- Peta dummy (Baturraden, Banyumas). Ganti atribut src dengan kode embed dari lokasi usaha yang asli -->
+          <iframe
+            class="peta"
+            src="https://www.google.com/maps?q=Baturraden,+Banyumas,+Jawa+Tengah&output=embed"
+            title="Lokasi Risol Lagi di Google Maps"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- AJAKAN AKHIR -->
+      <section class="ajakan">
+        <img class="bg-foto" src="image/hero-gurih.jpg" alt="" loading="lazy" />
+        <h2>Siap mencicipi risol kami?</h2>
+        <p>Pilih rasa favoritmu dan kirim pesanan lewat WhatsApp.</p>
+        <div class="ajakan-aksi">
+          <a href="#pesan" class="tombol tombol-krem">Pesan sekarang</a>
+          <a href="#produk" class="tombol tombol-garis-krem">Lihat menu</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Pita teks berjalan -->
+    <div class="pita" aria-hidden="true">
+      <div class="pita-isi">
+        <span>Homemade</span><span>Bahan pilihan</span><span>Banyak pilihan rasa</span><span>Harga ramah di kantong</span><span>Pesan via WhatsApp</span>
+        <span>Homemade</span><span>Bahan pilihan</span><span>Banyak pilihan rasa</span><span>Harga ramah di kantong</span><span>Pesan via WhatsApp</span>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p class="footer-nama">RISOL LAGI</p>
+      <p>&copy; 2026 Sekar Arum. Jl. Raya Baturraden No. 10, Banyumas.</p>
+      <p class="kredit">
+        Foto dari Wikimedia Commons, lisensi
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>:
+        <a href="https://commons.wikimedia.org/wiki/File:Risoles.jpg" target="_blank" rel="noopener">Adnamiraatig</a>,
+        <a href="https://commons.wikimedia.org/wiki/File:Risoles_2.jpg" target="_blank" rel="noopener">Adnamiraatig</a>,
+        <a href="https://commons.wikimedia.org/wiki/File:Teh_dan_Risoles_Cokelat.jpg" target="_blank" rel="noopener">RT. Hakimi</a>,
+        <a href="https://commons.wikimedia.org/wiki/File:Risoles_dengan_Isi.jpg" target="_blank" rel="noopener">RT. Hakimi</a>,
+        <a href="https://commons.wikimedia.org/wiki/File:Risol.jpg" target="_blank" rel="noopener">Irhanz</a>,
+        <a href="https://commons.wikimedia.org/wiki/File:Risol_ayam.jpg" target="_blank" rel="noopener">Raflinoer32</a>.
+        Beberapa foto dipotong dan diubah ukurannya.
+      </p>
+    </footer>
+
+    <!-- Bilah ringkasan pesanan (muncul jika ada item) -->
+    <a href="#pesan" class="bar-pesanan" id="barPesanan" hidden>
+      <span><span id="barJumlah">0</span> item</span>
+      <span>Lihat pesanan &middot; <strong id="barTotal">Rp0</strong></span>
+    </a>
+
+    <!-- Lightbox gambar -->
+    <div class="lightbox" id="lightbox" hidden>
+      <button class="lightbox-tutup" id="lightboxTutup">Tutup</button>
+      <img src="" alt="" id="lightboxImg" />
+    </div>
+  </body>
+</html>
