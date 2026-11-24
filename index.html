@@ -1,135 +1,1075 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Naura</title>
-  <!-- Menghubungkan huruf Poppins dan file CSS (pertemuan 4) -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+/* 1. Pengaturan umum
+   Palet: krem #FFF7D1, krem tua #FFECC8, peach #FFD09B, pink #FFB0B0.
+   Warna coklat tua dipakai untuk teks dan tombol agar tetap terbaca. */
+:root {
+  --krem: #fff7d1;
+  --krem-tua: #ffecc8;
+  --peach: #ffd09b;
+  --pink: #ffb0b0;
+  --tinta: #3d2616;
+  --tinta-lembut: #7a5640;
+  --redup: #b39a7e;
+  --putih: #fffdf4;
+  --garis: rgba(61, 38, 22, 0.14);
+}
 
-  <!-- HEADER: nama usaha dan menu -->
-  <header>
-        <h1>RISOL LAGI</h1>
-        <P><EM>Kenikmatan segala rasa di setiap gigitan</EM></P>
-        <nav>
-            <a href="#tentang">Tentang</a> |
-            <a href="#produk">Produk</a> |
-            <a href="#kontak">Kontak</a> |
-            <a href="#google maps">Google Maps</a> |
-        </nav>
-  </header>
+* {
+  box-sizing: border-box;
+}
 
-  <main>
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
 
-    <!-- BAGIAN TENTANG -->
-     <section id="Tentang">
-            <h2>Tentang Kami</h2>
-            <p>Kami adalah produsen risol yang 100% Homemade dimana kami mengutamakan kualitas sehingga melahitrkan citarasa yang nikmat disetiap gigitan.</p>
-           <img src="image/images.jpg" alt="">
-           <img src="image/risol coklat.jpg" alt="">
-           <img src="image/risol mayo.jpg" alt="">
-        </section>
+body {
+  margin: 0;
+  font-family: "Poppins", Arial, sans-serif;
+  color: var(--tinta);
+  line-height: 1.6;
+  background-color: var(--krem);
+}
 
-      <h3>Mengapa Memilih Kami?</h3>
-      <ul>
-        <li>Risol yang kami buat menggunakan bahan pilihan dan berkualitas untuk menghasilkan risol yang lezat, berkualitas, dan memuaskan.</li>
-        <li>Banyak pilihan rasa yang mampu menggugah selera dan bisa disesuaikan dengan selera mu.</li>
-        <li>Harga yang ramah di kantong sudah bisa menikmati camilan lezat tanpa harus mengeluarkan banyak uang.</li>
-      </ul>
+img {
+  max-width: 100%;
+  height: auto;
+}
 
-      <h3>Cara Pemesanan</h3>
-      <ol>
-        <li>Pilih produk dan jumlah</li>
-        <li>Hubungi kami melalui WhatsApp</li>
-        <li>Lakukan pembayaran, pesanan dikirim</li>
-      </ol>
-    </section>
+a {
+  color: var(--tinta);
+}
 
-    <!-- BAGIAN PRODUK -->
-     <section id="Produk">
-            <h2>Produk dan Harga</h2>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Produk</th>
-                        <th>Harga</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Risol Sayur Original</td>
-                        <td>Rp3.500</td>
-                    </tr>
-                    <tr>
-                        <td>Risol Ayam Pedas</td>
-                        <td>Rp3.500</td>
-                    </tr>
-                    <tr>
-                        <td>Risol Ayam Mayo</td>
-                        <td>Rp3.500</td>
-                    </tr>
-                     <tr>
-                        <td>Risol Sosis Telor Mayo</td>
-                        <td>Rp3.500</td>
-                    </tr>
-                     <tr>
-                        <td>Risol Beef Slice</td>
-                        <td>Rp3.500</td>
-                    </tr>
-                     <tr>
-                        <td>Risol Coklat Lumer</td>
-                        <td>Rp4.000</td>
-                    </tr>
-                    <tr>
-                        <td>Risol Keju Lumer</td>
-                        <td>Rp4.000</td>
-                    </tr>
-                    <tr>
-                        <td>Risol Matcha Lumer</td>
-                        <td>Rp4.000</td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-            
-            <!-- Sematan Video YouTube (Ganti atribut src dengan link embed video asli) -->
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/UHH3ucvAqGA?si=NufkQPaZXsokCr-d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </section>
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0;
+}
 
-    <!-- BAGIAN KONTAK -->
-    <section id="kontak">
-      <h2>Hubungi Kami</h2>
-      <p>Jl. Raya Baturraden No. 10<br>Banyumas, Jawa Tengah</p>
-      <p>
-        <a class="tombol-wa" href="https://wa.me/6281234567890?text=Halo%20Sekar%20Arum,%20saya%20mau%20pesan" target="_blank">Pesan via WhatsApp</a>
-      </p>
+.tengah {
+  text-align: center;
+  margin: 40px 0 0;
+}
 
-      <form action="#" method="post">
-        <label for="nama">Nama</label><br>
-        <input type="text" id="nama" name="nama" required><br><br>
+/* 2. Bilah info dan header */
+.info-bar {
+  background-color: var(--peach);
+  color: var(--tinta);
+  text-align: center;
+  font-size: 13px;
+  padding: 8px 16px;
+}
 
-        <label for="wa">Nomor WhatsApp</label><br>
-        <input type="tel" id="wa" name="wa" placeholder="0812..." required><br><br>
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  height: 68px;
+  margin-bottom: -68px;
+  color: var(--krem);
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
 
-        <label for="pesan">Pesan</label><br>
-        <textarea id="pesan" name="pesan" rows="4"></textarea><br><br>
+.site-header.menempel {
+  background-color: var(--krem);
+  color: var(--tinta);
+  box-shadow: 0 1px 0 var(--garis);
+}
 
-        <button type="submit">Kirim</button>
-      </form>
-      <!-- Tempat peta: tempel kode iframe dari Google Maps di sini -->
-    </section>
+.header-inner {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
 
-  </main>
+.nav-grup {
+  display: flex;
+  gap: 4px;
+}
 
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2026 Sekar Arum. Jl. Raya Baturraden No. 10, Banyumas.</p>
-  </footer>
+.nav-kanan {
+  justify-content: flex-end;
+}
 
-</body>
+.nav-link,
+.logo {
+  color: inherit;
+  text-decoration: none;
+}
 
+.nav-link {
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
 
-</html>
+.nav-link:hover {
+  background-color: rgba(255, 247, 209, 0.22);
+}
+
+.menempel .nav-link:hover {
+  background-color: var(--krem-tua);
+}
+
+.nav-link.aktif {
+  background-color: var(--krem);
+  color: var(--tinta);
+}
+
+.menempel .nav-link.aktif {
+  background-color: var(--peach);
+}
+
+.logo {
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 18px;
+}
+
+.menu-toggle {
+  display: none;
+  justify-self: end;
+  background: none;
+  border: 1px solid currentColor;
+  color: inherit;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* 3. Hero (carousel) */
+.hero {
+  position: relative;
+  height: 680px;
+  overflow: hidden;
+  background-color: var(--tinta);
+  color: var(--krem);
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.7s, visibility 0s 0.7s;
+}
+
+.hero-slide.aktif {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.7s;
+}
+
+.bg-foto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(40, 24, 14, 0.62) 0%,
+    rgba(40, 24, 14, 0.28) 38%,
+    rgba(40, 24, 14, 0.5) 100%
+  );
+}
+
+.hero-slide.gelap::after {
+  background: linear-gradient(
+    180deg,
+    rgba(40, 24, 14, 0.7) 0%,
+    rgba(40, 24, 14, 0.55) 50%,
+    rgba(40, 24, 14, 0.65) 100%
+  );
+}
+
+.hero-isi {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero-teks {
+  position: absolute;
+  left: 24px;
+  top: 200px;
+  max-width: 400px;
+}
+
+.hero-teks h1,
+.hero-teks h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.hero-teks p {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #f6e8c6;
+}
+
+.hero-kartu {
+  position: absolute;
+  right: 24px;
+  top: 150px;
+  width: 230px;
+  padding: 8px;
+  border-radius: 18px;
+  background-color: rgba(255, 247, 209, 0.28);
+  backdrop-filter: blur(8px);
+  text-decoration: none;
+  color: var(--tinta);
+}
+
+.hero-kartu img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.hero-kartu-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background-color: var(--krem);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.hero-kartu-label b {
+  background-color: var(--peach);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 12px;
+}
+
+/* Kata raksasa di bawah hero, terpotong di tepi bawah seperti referensi */
+.kata {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: -0.13em;
+  margin: 0;
+  padding: 0 24px;
+  max-width: 1248px;
+  margin-inline: auto;
+  font-size: clamp(110px, 22vw, 320px);
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+  color: var(--krem);
+  pointer-events: none;
+}
+
+.hero-kontrol {
+  position: absolute;
+  z-index: 5;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background-color: var(--krem);
+}
+
+.hero-kontrol button {
+  padding: 5px 14px;
+  border: 0;
+  border-radius: 999px;
+  background-color: var(--krem-tua);
+  color: var(--tinta);
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.hero-kontrol button:hover {
+  background-color: var(--peach);
+}
+
+.hero-titik {
+  display: flex;
+  gap: 6px;
+}
+
+.hero-titik button {
+  width: 22px;
+  height: 6px;
+  padding: 0;
+  border-radius: 3px;
+  background-color: var(--peach);
+}
+
+.hero-titik button.aktif {
+  background-color: var(--tinta);
+}
+
+/* 4. Tombol */
+.tombol {
+  display: inline-block;
+  padding: 11px 24px;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, transform 0.1s;
+}
+
+.tombol:active {
+  transform: translateY(1px);
+}
+
+.tombol-krem {
+  background-color: var(--krem);
+  color: var(--tinta);
+}
+
+.tombol-krem:hover {
+  background-color: var(--peach);
+}
+
+.tombol-gelap {
+  background-color: var(--tinta);
+  color: var(--krem);
+}
+
+.tombol-gelap:hover {
+  background-color: #5a3a24;
+}
+
+.tombol-garis-gelap {
+  border-color: var(--tinta);
+  color: var(--tinta);
+}
+
+.tombol-garis-gelap:hover {
+  background-color: var(--tinta);
+  color: var(--krem);
+}
+
+.tombol-garis-krem {
+  border-color: var(--krem);
+  color: var(--krem);
+}
+
+.tombol-garis-krem:hover {
+  background-color: var(--krem);
+  color: var(--tinta);
+}
+
+.tombol:disabled {
+  background-color: var(--krem-tua);
+  color: var(--redup);
+  cursor: not-allowed;
+}
+
+.tombol-teks {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin-top: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--tinta-lembut);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* 5. Struktur bagian */
+.blok {
+  padding: 72px 24px;
+}
+
+.blok-krem {
+  background-color: var(--krem-tua);
+}
+
+.kolom {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sub {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 3px 14px;
+  border-radius: 999px;
+  background-color: var(--pink);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+h2 {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.subjudul {
+  font-size: 18px;
+  margin: 32px 0 8px;
+}
+
+.pengantar {
+  max-width: 620px;
+  margin: 0 0 32px;
+  color: var(--tinta-lembut);
+}
+
+.dua-kolom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* 6. Filter dan menu */
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  margin-bottom: 8px;
+}
+
+.filter-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: clamp(26px, 3.4vw, 40px);
+  font-weight: 600;
+  color: var(--redup);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.filter-btn:hover {
+  color: var(--tinta-lembut);
+}
+
+.filter-btn.aktif {
+  color: var(--tinta);
+}
+
+.filter-btn sup {
+  margin-left: 2px;
+  font-size: 0.4em;
+  font-weight: 600;
+  vertical-align: super;
+}
+
+.menu-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.menu-baris {
+  position: relative;
+  padding: 20px 16px 16px;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  background-color: var(--krem-tua);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.menu-baris:hover {
+  transform: translateY(-3px);
+}
+
+.menu-baris[hidden] {
+  display: none;
+}
+
+.menu-baris.dipilih {
+  border-color: var(--pink);
+}
+
+.lencana {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 2px 12px;
+  border-radius: 999px;
+  background-color: var(--krem);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.lencana-manis {
+  background-color: var(--pink);
+}
+
+.menu-foto {
+  display: block;
+  width: 70%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin: 24px auto 16px;
+  border-radius: 50%;
+  border: 4px solid var(--krem);
+}
+
+.menu-nama {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  min-height: 2.4em;
+}
+
+.menu-bawah {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 6px 6px 14px;
+  border-radius: 12px;
+  background-color: var(--putih);
+}
+
+.menu-harga {
+  font-weight: 600;
+}
+
+.qty {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.qty button {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 8px;
+  background-color: var(--tinta);
+  color: var(--krem);
+  font-size: 17px;
+  font-family: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.qty button:hover {
+  background-color: #5a3a24;
+}
+
+.qty-nilai {
+  min-width: 26px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* 7. Tentang */
+.alasan,
+.langkah {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.alasan li {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 8px;
+  padding: 14px 0;
+  border-top: 1px solid var(--garis);
+}
+
+.alasan p {
+  margin: 0;
+}
+
+.no {
+  color: var(--tinta-lembut);
+  font-weight: 600;
+}
+
+.kolase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 14px;
+  height: 560px;
+}
+
+.kolase-item {
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  background: none;
+  cursor: zoom-in;
+}
+
+.kolase-tinggi {
+  grid-row: 1 / 3;
+}
+
+.kolase-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.kolase-item:hover img,
+.kolase-item:focus-visible img {
+  transform: scale(1.05);
+}
+
+/* 8. Cara pemesanan */
+.langkah li {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  padding: 18px 0;
+  border-top: 1px solid var(--garis);
+  font-size: clamp(22px, 3.2vw, 36px);
+  font-weight: 600;
+}
+
+.langkah li:last-child {
+  border-bottom: 1px solid var(--garis);
+}
+
+.langkah .no {
+  font-size: 0.5em;
+  color: var(--redup);
+  min-width: 2em;
+}
+
+/* 9. Pesanan, form, FAQ */
+.kartu-putih {
+  padding: 24px;
+  border-radius: 20px;
+  background-color: var(--putih);
+}
+
+.kosong {
+  margin: 0;
+  color: var(--tinta-lembut);
+}
+
+.keranjang-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.keranjang-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--garis);
+}
+
+.keranjang-list .rincian {
+  color: var(--tinta-lembut);
+  font-size: 14px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 14px;
+  font-size: 18px;
+}
+
+label {
+  display: block;
+  margin: 0 0 4px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 11px 14px;
+  margin-bottom: 16px;
+  border: 1.5px solid var(--garis);
+  border-radius: 12px;
+  background-color: var(--krem);
+  color: var(--tinta);
+  font-family: inherit;
+  font-size: 15px;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--pink);
+  border-color: var(--pink);
+}
+
+.faq details {
+  border-top: 1px solid var(--garis);
+  padding: 12px 0;
+}
+
+.faq details:last-child {
+  border-bottom: 1px solid var(--garis);
+}
+
+.faq summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.faq p {
+  margin: 8px 0 0;
+  color: var(--tinta-lembut);
+}
+
+/* 10. Video dan peta */
+.video-yt {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 880px;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 20px;
+}
+
+.peta {
+  display: block;
+  width: 100%;
+  height: 380px;
+  border: 0;
+  border-radius: 20px;
+}
+
+/* 11. Ajakan akhir, pita, footer */
+.ajakan {
+  position: relative;
+  padding: 96px 24px;
+  text-align: center;
+  color: var(--krem);
+  background-color: var(--tinta);
+  overflow: hidden;
+}
+
+.ajakan::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(40, 24, 14, 0.6);
+}
+
+.ajakan > *:not(.bg-foto) {
+  position: relative;
+  z-index: 2;
+}
+
+.ajakan h2 {
+  margin-bottom: 8px;
+}
+
+.ajakan p {
+  margin: 0 0 24px;
+}
+
+.ajakan-aksi {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pita {
+  overflow: hidden;
+  background-color: var(--peach);
+  border-top: 1px solid var(--garis);
+  padding: 10px 0;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.pita-isi {
+  display: inline-flex;
+  animation: jalan 40s linear infinite;
+}
+
+.pita-isi span {
+  padding: 0 28px;
+}
+
+.pita-isi span::after {
+  content: "/";
+  margin-left: 56px;
+  color: var(--tinta-lembut);
+}
+
+@keyframes jalan {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.site-footer {
+  background-color: var(--tinta);
+  color: var(--krem-tua);
+  text-align: center;
+  padding: 32px 24px;
+}
+
+.site-footer p {
+  margin: 0 0 6px;
+}
+
+.footer-nama {
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--krem);
+}
+
+.site-footer .kredit {
+  max-width: 760px;
+  margin: 12px auto 0;
+  font-size: 12px;
+  color: var(--redup);
+}
+
+.site-footer .kredit a {
+  color: var(--peach);
+}
+
+/* 12. Bilah pesanan dan lightbox */
+.bar-pesanan {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 40;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+  background-color: var(--tinta);
+  color: var(--krem);
+  text-decoration: none;
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(40, 24, 14, 0.3);
+}
+
+.bar-pesanan[hidden],
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-color: rgba(40, 24, 14, 0.88);
+}
+
+.lightbox img {
+  max-height: 100%;
+  border-radius: 16px;
+}
+
+.lightbox-tutup {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 8px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--krem);
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* 13. Gerakan dikurangi */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .pita-isi {
+    animation: none;
+  }
+}
+
+/* 14. Tablet */
+@media (max-width: 1000px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dua-kolom {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .kolase {
+    height: 440px;
+  }
+}
+
+/* 15. Layar kecil */
+@media (max-width: 760px) {
+  .blok {
+    padding: 48px 16px;
+  }
+
+  .header-inner {
+    grid-template-columns: 1fr auto;
+    padding: 0 16px;
+  }
+
+  .logo {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .menu-toggle {
+    display: block;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .nav-grup {
+    display: none;
+    grid-column: 1 / 3;
+    flex-direction: column;
+    background-color: var(--krem);
+    color: var(--tinta);
+    border-radius: 16px;
+    padding: 8px;
+    box-shadow: 0 8px 24px rgba(40, 24, 14, 0.2);
+  }
+
+  .site-header.buka .nav-grup {
+    display: flex;
+  }
+
+  .nav-kanan {
+    grid-row: 3;
+    border-radius: 0 0 16px 16px;
+    margin-top: -16px;
+    padding-top: 0;
+  }
+
+  .nav-kiri {
+    grid-row: 2;
+    margin-top: 8px;
+  }
+
+  .site-header.buka .nav-kiri {
+    border-radius: 16px 16px 0 0;
+  }
+
+  .nav-kiri,
+  .nav-kanan {
+    justify-content: flex-start;
+  }
+
+  .hero {
+    height: 600px;
+  }
+
+  .hero-teks {
+    left: 16px;
+    right: 16px;
+    top: 120px;
+    max-width: none;
+  }
+
+  .hero-kartu {
+    display: none;
+  }
+
+  .hero-isi {
+    padding: 0 16px;
+  }
+
+  .kata {
+    padding: 0 16px;
+  }
+
+  .hero-kontrol {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .hero-kontrol button:not(.hero-titik button) {
+    display: none;
+  }
+
+  .menu-grid {
+    gap: 12px;
+  }
+
+  .menu-baris {
+    padding: 16px 10px 12px;
+  }
+
+  .menu-nama {
+    font-size: 14px;
+  }
+
+  .menu-bawah {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px;
+  }
+
+  .qty {
+    justify-content: space-between;
+  }
+
+  .kolase {
+    height: 360px;
+  }
+
+  .langkah li {
+    gap: 12px;
+  }
+}
